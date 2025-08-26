@@ -23,7 +23,9 @@ class MicropostsController < ApplicationController
       redirect_to request.referrer, status: :see_other
     end
   end
-
+  def latest; 
+    @microposts = Micropost.latest(current_user)
+  end
   private
 
     def micropost_params
