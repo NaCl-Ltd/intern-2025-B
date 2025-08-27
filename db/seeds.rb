@@ -17,7 +17,8 @@ User.create!(name:  name,
     password:              password,
     password_confirmation: password,
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    introduction: Faker::Lorem.sentence(word_count: 5))
 end
 
 # ユーザーの一部を対象にマイクロポストを生成する
