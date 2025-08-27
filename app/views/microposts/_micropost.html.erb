@@ -12,6 +12,7 @@
     <% if current_user?(micropost.user) %>
       <%= link_to "delete", micropost, data: { "turbo-method": :delete,
                                                turbo_confirm: "You sure?" } %>
+      <p>このポストを固定する</p>
     <% end %>
   </span>
 </li>
