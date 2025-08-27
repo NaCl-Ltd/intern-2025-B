@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
     member do
       get :fixation
+      get :unfixation
     end
   end
   resources :relationships,       only: [:create, :destroy]
