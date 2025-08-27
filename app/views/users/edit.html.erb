@@ -21,12 +21,17 @@
       <%= f.label :introduction, "Introduction" %>
       <%= f.text_field :introduction, class: 'form-control' %>
 
+      <%= f.label :image, "Profile image" %>
+      <%= f.file_field :image %>
+
       <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
+      <% end %>
 
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
       <a href="https://gravatar.com/emails" target="_blank">change</a>
+      
+
     </div>
   </div>
 </div>
