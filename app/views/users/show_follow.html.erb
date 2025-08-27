@@ -2,7 +2,11 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%= image_tag(@user.image, size: 50) %>
+      <% if @user.image.attached? %>
+        <%= image_tag(@user.image, size: 50) %>
+      <% else %>
+        <%= gravatar_for(@user, size: 50) %>
+      <% end %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><strong>Microposts:</strong> <%= @user.microposts.count %></span>

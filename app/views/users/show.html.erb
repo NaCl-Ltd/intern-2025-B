@@ -2,8 +2,12 @@
 <div class="row">
   <aside class="col-md-4">
     <section>
-      <h1><%= image_tag(@user.image, size: 50) %>
-        
+      <h1>
+      <% if @user.image.attached? %>
+        <%= image_tag(@user.image, size: 50) %>
+      <% else %>
+        <%= gravatar_for(@user, size: 50) %>
+      <% end %>
         <%= @user.name %>
       </h1>
     </section>
