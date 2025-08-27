@@ -13,6 +13,12 @@
     </aside>
     <div class="col-md-8">
       <h3>Micropost Feed</h3>
+      <ol class="microposts">
+        <% if current_user.fixed_post %>
+          <% fixed_post = Micropost.find_by(id: current_user.fixed_post) %>
+          <%= render fixed_post %>
+        <% end %>
+      </ol>
       <%= render 'shared/feed' %>
     </div>
   </div>

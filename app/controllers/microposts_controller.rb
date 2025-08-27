@@ -30,16 +30,11 @@ class MicropostsController < ApplicationController
 
   def fixation
     @micropost = Micropost.find(params[:id])
-    Rails.logger.debug "[DEBUG] --------------------------"
-    Rails.logger.debug "[DEBUG] params: #{params}"
-
-    Rails.logger.debug "[DEBUG] before: #{current_user.inspect}"
     if current_user.update(fixed_post: @micropost.id)
       flash[:success] = "Micropost fixed" 
-      Rails.logger.debug "[DEBUG] after: #{current_user.inspect}"
     end
       
-    redirect_to root_url, status: :see_other
+    redirect_back(fallback_location: root_url, status: :see_other)
   end
 
   private
