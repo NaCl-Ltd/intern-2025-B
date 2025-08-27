@@ -22,6 +22,8 @@
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <% if @user.fixed_post %>
+          📍固定ポスト |
+          <%= link_to "固定解除", unfixation_micropost_path, method: :get %>
           <% fixed_post = Micropost.find_by(id: @user.fixed_post) %>
           <%= render fixed_post %>
         <% end %>
