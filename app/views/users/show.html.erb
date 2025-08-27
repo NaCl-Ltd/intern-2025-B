@@ -3,10 +3,15 @@
   <aside class="col-md-4">
     <section>
       <h1>
-        <%= gravatar_for @user %>
+      <% if @user.image.attached? %>
+        <%= image_tag(@user.image, size: 50) %>
+      <% else %>
+        <%= gravatar_for(@user, size: 50) %>
+      <% end %>
         <%= @user.name %>
       </h1>
     </section>
+    <%= @user.introduction %>
     <section class="stats">
       <%= render 'shared/stats', user: @user %>
     </section>
