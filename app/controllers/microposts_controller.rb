@@ -45,6 +45,16 @@ class MicropostsController < ApplicationController
     redirect_back(fallback_location: root_url, status: :see_other)
   end
 
+  def search;
+    if params[:q].present?
+      @users = User.where("name LIKE ?", "%#{params[:q]}%")
+      @microposts = Micropost.where("content LIKE ?", "%#{params[:q]}%")
+    else
+      @users = []
+      @microposts = []
+    end
+  end
+
   private
 
     def micropost_params

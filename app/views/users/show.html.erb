@@ -2,7 +2,6 @@
 <div class="row">
   <aside class="col-md-4">
     <section>
-      <h1>
       <div class="user-image", style="position: relative; display: inline-block;">
       <% if @user.background_image.attached? %>
         <%= image_tag(@user.background_image, size: '350x150', class: "background-image", style: "display: block;") %>
@@ -13,6 +12,7 @@
         <%= gravatar_for(@user, size: 80, class: "icon-image", style: "position: absolute; left: 135px; top: 35px;") %>
       <% end %>
       </div>
+      <h1>
         <%= @user.name %>
       </h1>
     </section>
