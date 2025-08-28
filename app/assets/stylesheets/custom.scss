@@ -318,3 +318,29 @@ span.image {
     border: 0;
   }
 }
+
+/* fixed post */
+
+.fixed-post {
+  border: 1px solid $gray-medium-light;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+
+  .fixed-post-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .microposts {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+}
