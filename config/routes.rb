@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy] do
     collection do
       get :latest
+      get :unfixation
     end
     member do
       get :fixation
-      get :unfixation
     end
   end
   resources :relationships,       only: [:create, :destroy]
