@@ -1,12 +1,16 @@
-<div class="user-image", style="position: relative; display: inline-block;">
+<div class="user-image">
   <% if current_user.background_image.attached? %>
-    <%= image_tag(current_user.background_image, size: '350x150', class: "background-image", style: "display: block;") %>
-  <% end %>
-  <% if current_user.image.attached? %>
-    <%= image_tag(current_user.image, size: 80, class: "icon-image", style: "position: absolute; left: 135px; top: 35px;") %>
-  <% else %>
-    <%= gravatar_for(current_user, size: 80, class: "icon-image", style: "position: absolute; left: 135px; top: 35px;") %>
-  <% end %>
+<%= image_tag(current_user.background_image, height: 150, style: "width: 100%; object-fit: cover;") %>  <% end %>
 </div>
-<h1><%= link_to current_user.name, current_user %></h1>
-<span><%= pluralize(current_user.microposts.count, "ポスト") %></span>
+<div class="user-header" style="display: flex; align-items: center;">
+  <% if current_user.image.attached? %>
+    <%= image_tag(current_user.image, size: 80) %>
+  <% else %>
+    <%= gravatar_for(current_user, size: 80) %>
+  <% end %>
+  <div class="user_info" style="margin-left: 20px;">
+    <h1><%= link_to current_user.name, current_user %></h1>
+    <span><%= link_to "view my profile", current_user %></span>
+    <span><%= pluralize(current_user.microposts.count, "ポスト") %></span>
+  </div>
+</div>
