@@ -1,17 +1,17 @@
-<h1>SEARCH</h1>
+<h1>検索🔍</h1>
 <%= form_with url: search_path, method: :get, local: true do %>
   <%= text_field_tag :q, params[:q], placeholder: "検索ワードを入力", style: "font-size: 1.5em; padding: 0.5em;" %>
   <%= hidden_field_tag :type, params[:type] || "microposts" %>
-  <%= submit_tag "search", style: "font-size: 1.5em; padding: 5px;" %>
+  <%= submit_tag "検索", style: "font-size: 1.5em; padding: 5px;" %>
 <% end %>
 
 <div style="margin: 10px 0;">
-  <%= link_to "Micropost", search_path(q: params[:q], type: "microposts"), class: "inline btn btn-primary", style: "font-size: 1.5em; width: 200px;" %>
-  <%= link_to "User", search_path(q: params[:q], type: "users"), class: "inline btn btn-primary", style: "font-size: 1.5em; width: 200px;" %>
+  <%= link_to "投稿", search_path(q: params[:q], type: "microposts"), class: "inline btn btn-primary", style: "font-size: 1.5em; width: 200px;" %>
+  <%= link_to "ユーザ", search_path(q: params[:q], type: "users"), class: "inline btn btn-primary", style: "font-size: 1.5em; width: 200px;" %>
 </div>
 
 <% if params[:type] == "users" %>
-  <h1>User</h1>
+  <h1>ユーザ</h1>
   <% if @users.any? %>
     <ul class="users">
       <%= render @users %>
@@ -20,7 +20,7 @@
     <p>該当なし</p>
   <% end %>
 <% else %>
-  <h1>Microposts</h1>
+  <h1>投稿</h1>
   <% if @microposts.any? %>
     <ol class="microposts">
       <%= render @microposts %>
