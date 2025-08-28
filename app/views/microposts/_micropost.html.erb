@@ -26,5 +26,20 @@
         <%= image_tag micropost.image.variant(:display) %>
       </div>
     <% end %>
+  <%# ↓↓↓ いいね機能の部分 ↓↓↓ %>
+  <div class="like-section">
+    <%# いいね数を表示 %>
+    <span class="like-count">
+      <%= micropost.likes.count %> いいね
+    </span>
+
+    <%# いいねボタンの表示 %>
+    <% if current_user.likes.find_by(micropost_id: micropost.id) %>
+      <%# いいね済の場合 → いいね解除ボタン %>
+      <%= link_to "❤", like_path(current_user.likes.find_by(micropost_id: micropost.id)), data: { "turbo-method": :delete } %>
+    <% else %>
+      <%# まだいいねしていな❤場合 → いいねボタン %>
+      <%= link_to "♡", likes_path(micropost_id: micropost.id), data: { "turbo-method": :post } %>
+    <% end %>
   </div>
 </li>
