@@ -3,20 +3,19 @@
   <aside class="col-md-4">
     <section>
       <div class="user-image", style="position: relative; display: inline-block;">
-        <% if @user.background_image.attached? %>
-        <%= image_tag(current_user.background_image, height: 200, style: "width: 100%; object-fit: cover;") %><% end %>
+      <% if @user.background_image.attached? %>
+<%= image_tag(@user.background_image, height: 200, style: "width: 100%; object-fit: cover;") %>      <% end %>
       </div>
       <div class="user-header" style="display: flex; align-items: center;">
-      <% if current_user.image.attached? %>
-        <%= image_tag(current_user.image, size: 80, style: "border-radius: 50%; margin-top: 5px;") %>
+      <% if @user.image.attached? %>
+        <%= image_tag(@user.image, size: 80, style: "border-radius: 50%; margin-top: 5px;) %>
       <% else %>
-        <%= gravatar_for(current_user, size: 80, style: "border-radius: 50%; margin-top: 5px;") %>
+        <%= gravatar_for(@user, size: 80, style: "border-radius: 50%; margin-top: 5px;) %>
       <% end %>
       <div class="user_info" style="margin-left: 20px;">
      <h1>
         <%= @user.name %>
       </h1>
-
     <%= @user.introduction %>
     <section class="stats">
       <%= render 'shared/stats', user: @user %>
