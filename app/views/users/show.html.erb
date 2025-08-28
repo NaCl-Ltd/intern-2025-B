@@ -4,13 +4,13 @@
     <section>
       <div class="user-image", style="position: relative; display: inline-block;">
       <% if @user.background_image.attached? %>
-<%= image_tag(@user.background_image, height: 150, style: "width: 100%; object-fit: cover;") %>      <% end %>
+<%= image_tag(@user.background_image, height: 200, style: "width: 100%; object-fit: cover;") %>      <% end %>
       </div>
       <div class="user-header" style="display: flex; align-items: center;">
       <% if @user.image.attached? %>
-        <%= image_tag(@user.image, size: 80) %>
+        <%= image_tag(@user.image, size: 80, style: "border-radius: 50%; margin-top: 5px;) %>
       <% else %>
-        <%= gravatar_for(@user, size: 80) %>
+        <%= gravatar_for(@user, size: 80, style: "border-radius: 50%; margin-top: 5px;) %>
       <% end %>
       <div class="user_info" style="margin-left: 20px;">
      <h1>
