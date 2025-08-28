@@ -1,6 +1,6 @@
 <li id="micropost-<%= micropost.id %>">
   <% if micropost.user.image.attached? %>
-    <%= link_to image_tag(micropost.user.image, size: 50) %>
+    <%= link_to image_tag(micropost.user.image, size: 50), micropost.user %>
   <% else %>
     <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <% end %>
@@ -12,11 +12,27 @@
     <% end %>
   </span>
   <span class="timestamp">
-    <%= time_ago_in_words(micropost.created_at) %>前に投稿 
+    <%= time_ago_in_words(micropost.created_at) %>前に投稿
     <% if current_user?(micropost.user) %>
       | <%= link_to "削除", micropost, data: { "turbo-method": :delete,
                                                  turbo_confirm: "You sure?" } %>
       | <%= link_to "固定", fixation_micropost_path(micropost), method: :get %>
     <% end %>
   </span>
+  <%# ↓↓↓ いいね機能の部分 ↓↓↓ %>
+  <div class="like-section">
+    <%# いいね数を表示 %>
+    <span class="like-count">
+      <%= micropost.likes.count %> いいね
+    </span>
+
+    <%# いいねボタンの表示 %>
+    <% if current_user.likes.find_by(micropost_id: micropost.id) %>
+      <%# いいね済の場合 → いいね解除ボタン %>
+      <%= link_to "❤", like_path(current_user.likes.find_by(micropost_id: micropost.id)), data: { "turbo-method": :delete } %>
+    <% else %>
+      <%# まだいいねしていな❤場合 → いいねボタン %>
+      <%= link_to "♡", likes_path(micropost_id: micropost.id), data: { "turbo-method": :post } %>
+    <% end %>
+  </div>
 </li>
