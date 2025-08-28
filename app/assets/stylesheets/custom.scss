@@ -208,45 +208,80 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
+.micropost-form {
+  padding: 1rem;
+  border: 1px solid #e6ecf0;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
 }
 
-input {
-  height: auto !important;
+.form-top {
+  display: flex;
+  gap: 1rem;
 }
 
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
+.micropost-form textarea {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  min-height: 80px;
+  background-color: transparent;
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
+.micropost-form textarea::placeholder {
+  color: #657786;
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
+.form-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-#session_remember_me {
-  width: auto;
-  margin-left: 0;
+.image-upload-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
+
+.image-upload-label svg {
+  width: 24px;
+  height: 24px;
+  fill: #1DA1F2;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.image-upload-label:hover svg {
+  opacity: 0.8;
+}
+
+.image-upload-label input[type="file"] {
+  display: none;
+}
+
+.micropost-form .btn-primary {
+  background-color: #1DA1F2;
+  border: none;
+  border-radius: 9999px;
+  //padding: 0.5rem 1.2rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.micropost-form .btn-primary:hover {
+  background-color: #0c85d0;
+}
+
+
+
 
 /* Dropdown menu */
 
