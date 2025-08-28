@@ -120,4 +120,5 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+    has_many :likes, dependent: :destroy
 end
