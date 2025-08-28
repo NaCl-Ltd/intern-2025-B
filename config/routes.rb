@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       get :latest
       get :unfixation
+      get :search
     end
     member do
       get :fixation
@@ -28,4 +29,5 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
   get '/microposts', to: 'static_pages#home'
+  get 'search', to: 'microposts#search', as: :search
 end
