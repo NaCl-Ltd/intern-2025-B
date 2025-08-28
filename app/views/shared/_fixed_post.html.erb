@@ -1,0 +1,13 @@
+<% if user.fixed_post && (fixed_post = Micropost.find_by(id: user.fixed_post)) %>
+  <div class="fixed-post">
+    <div class="fixed-post-header">
+      <span>📍 固定ポスト</span>
+      <% if current_user == user %>
+        | <%= link_to "固定解除", unfixation_microposts_path, method: :get %>
+      <% end %>
+    </div>
+    <ol class="microposts">
+      <%= render fixed_post %>
+    </ol>
+  </div>
+<% end %>
